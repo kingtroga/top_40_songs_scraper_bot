@@ -3,7 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 import requests
-import re
 import os
 
 # Get the top 40 songs

@@ -29,18 +29,19 @@ def get_top_40(p_tags):
 get_top_40(p_tags)
 
 # start bot automation
-driver = webdriver.Firefox()
-driver.implicitly_wait(8)
+try:
+    driver = webdriver.Firefox(executable_path=r"geckodriver.exe")
+    driver.implicitly_wait(8)
+except:
+    driver = webdriver.Chrome(executable_path=r"chromedriver.exe")
 
 # Make folder where all songs would be stored
-directory = r"lyrics"
-parent_dir = r"C:\Users\TARI\Documents\GitHub\top_40_songs_scraper_bot"
-path = os.path.join(parent_dir, directory)
+path = r"lyrics"
 try:
     os.makedirs(path, exist_ok = True)
-    print("Directory '%s' created successfully" % directory)
+    print("Directory '%s' created successfully" % path)
 except OSError as error:
-    print("Directory '%s' can not be created" % directory)
+    print("Directory '%s' can not be created" % path)
 
 # Get the lyrics of every song on the top 40 list
 # and store it to the lyrics folder
